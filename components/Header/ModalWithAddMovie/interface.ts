@@ -2,6 +2,8 @@ export interface IFormValues {
   title: string;
   year: string;
   description: string;
+  poster: string;
+  transliterate: string;
   actors?: string[]
 }
 
