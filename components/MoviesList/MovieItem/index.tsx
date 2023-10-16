@@ -39,6 +39,10 @@ const Title = styled.h2`
   max-width: 100%;
   margin-bottom: 6px;
   text-align: center;
+
+  span {
+    color:#c2c2c2;
+  }
 `;
 
 const Description = styled.p`
@@ -62,7 +66,7 @@ export const MovieItem = ({movie}: IMovieItem) => {
           <Image src={movie.poster} fill alt={movie.title}/>
         </ImageContainer>
         <FilmInfoContainer>
-          <Title>{movie.title}</Title>
+          <Title><span>{movie.year}</span>{' '}{movie.title}</Title>
           <Description>{movie.description}</Description>
         </FilmInfoContainer>
       </Link>
