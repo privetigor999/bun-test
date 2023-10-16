@@ -1,7 +1,9 @@
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Col } from 'antd';
 import styled from 'styled-components';
+import { routes } from '@/data/routes';
 
 import type { IMovie } from '@/interface/movie';
 
@@ -37,6 +39,10 @@ const Title = styled.h2`
   max-width: 100%;
   margin-bottom: 6px;
   text-align: center;
+
+  span {
+    color:#c2c2c2;
+  }
 `;
 
 const Description = styled.p`
@@ -55,13 +61,15 @@ const Description = styled.p`
 export const MovieItem = ({movie}: IMovieItem) => {
   return (
     <Col xs={24} sm={12} md={8} lg={8} xl={8} style={{cursor: 'pointer', marginBottom: '18px'}}>
-      <ImageContainer>
-        <Image src={movie.poster} fill alt={movie.title}/>
-      </ImageContainer>
-      <FilmInfoContainer>
-        <Title>{movie.title}</Title>
-        <Description>{movie.description}</Description>
-      </FilmInfoContainer>
+      <Link href={`/${routes.movie}/${movie.transliterate}`}>
+        <ImageContainer>
+          <Image src={movie.poster} fill alt={movie.title}/>
+        </ImageContainer>
+        <FilmInfoContainer>
+          <Title><span>{movie.year}</span>{' '}{movie.title}</Title>
+          <Description>{movie.description}</Description>
+        </FilmInfoContainer>
+      </Link>
     </Col>
-  )
-}
+  );
+};

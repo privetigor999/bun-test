@@ -18,6 +18,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { v4 as uuidv4 } from 'uuid';
 
 import { getYearArray } from './getYearArray';
+import { dbCollection } from '@/data/db';
 import { actors } from './actors';
 import type { IFile } from './interface';
 import type { IMovie } from '@/interface/movie';
@@ -44,7 +45,7 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
     const postFormData = async () => {
       setLoading(true);
 
-      const moviesRef = collection(db, 'movies');
+      const moviesRef = collection(db, dbCollection.movies);
 
       const id = uuidv4();
 
@@ -96,7 +97,7 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
       },
 
       (error) => {
-        console.log('error: ', error)
+        console.debug('error: ', error)
       },
 
       async () => {
@@ -129,7 +130,7 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
         onFinish={handleSubmit}
         autoComplete='off'
         name='add_movie'
-        onFinishFailed={(v) => console.log(v)}
+        onFinishFailed={(v) => console.debug(v)}
       >
         <Form.Item
           label='Название'
