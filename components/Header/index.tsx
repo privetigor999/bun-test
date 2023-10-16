@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import { Button } from 'antd';
 import styled from 'styled-components';
-
 import { ModalWithAddMovie } from './ModalWithAddMovie';
+import { routes } from '@/data/routes';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -32,7 +33,9 @@ export const Header = () => {
     <HeaderContainer>
       <Navigator>
         <DivContainer>
-          <Button style={{marginRight: 20}}>Главная</Button>
+          <Link href={routes.main}>
+            <Button style={{marginRight: 20}}>Главная</Button>
+          </Link>
           <Button onClick={() => setIsOpenModal(true)}>Добавить фильм</Button>
         </DivContainer>
         <Button>Логин</Button>

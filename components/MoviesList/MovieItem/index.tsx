@@ -56,8 +56,8 @@ const Description = styled.p`
 
 export const MovieItem = ({movie}: IMovieItem) => {
   return (
-    <Link href={`/${routes.movie}/${movie.transliterate}`}>
-      <Col xs={24} sm={12} md={8} lg={8} xl={8} style={{cursor: 'pointer', marginBottom: '18px'}}>
+    <Col xs={24} sm={12} md={8} lg={8} xl={8} style={{cursor: 'pointer', marginBottom: '18px'}}>
+      <Link href={`/${routes.movie}/${movie.transliterate}`}>
         <ImageContainer>
           <Image src={movie.poster} fill alt={movie.title}/>
         </ImageContainer>
@@ -65,7 +65,7 @@ export const MovieItem = ({movie}: IMovieItem) => {
           <Title>{movie.title}</Title>
           <Description>{movie.description}</Description>
         </FilmInfoContainer>
-      </Col>
-    </Link>
-  )
-}
+      </Link>
+    </Col>
+  );
+};

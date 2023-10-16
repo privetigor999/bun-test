@@ -2,7 +2,7 @@
 import { db } from '@/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { Row } from 'antd';
+import { Row, Input } from 'antd';
 import { MovieItem } from './MovieItem';
 import { dbCollection } from '@/data/db';
 
@@ -29,7 +29,13 @@ export const MoviesList = () => {
   }, []);
 
   return (
+
     <Row gutter={[16, 16]} style={{width: '100%', padding: '0 30px', margin: '20px 0'}}>
+      <Input.Search 
+        placeholder='Поиск фильма'
+        allowClear
+        enterButton
+      />
       {
         movies?.map(movie => (
           <MovieItem movie={movie} key={movie.id}/>

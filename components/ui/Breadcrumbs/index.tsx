@@ -6,7 +6,7 @@ import type { IBreadcrumb } from './interface';
 
 interface IBreadcrumbsProps {
   crubms: IBreadcrumb[];
-  style: any
+  style: unknown;
 }
 
 export const Breadcrumbs = ({crumbs, style}: IBreadcrumbsProps) => {
@@ -30,15 +30,15 @@ export const Breadcrumbs = ({crumbs, style}: IBreadcrumbsProps) => {
       <nav>
         <UlComponent
           itemScope
-          itemType="http://schema.org/BreadcrumbList"
+          itemType='http://schema.org/BreadcrumbList'
           style={style}
         >
           {crumbs.length > 0 &&
             crumbs.map((crumb, i) => (
               <LiComponent
-                itemProp="itemListElement"
+                itemProp='itemListElement'
                 itemScope
-                itemType="http://schema.org/ListItem"
+                itemType='http://schema.org/ListItem'
                 key={i}
               >
                 {!!i && (
@@ -49,9 +49,9 @@ export const Breadcrumbs = ({crumbs, style}: IBreadcrumbsProps) => {
 
                 {crumb.src ? (
                   <Link
-                    itemProp="item"
+                    itemProp='item'
                     itemScope
-                    itemType="http://schema.org/Thing"
+                    itemType='http://schema.org/Thing'
                     href={crumb.src}
                   >
                     {crumb.title + " "}
@@ -60,12 +60,12 @@ export const Breadcrumbs = ({crumbs, style}: IBreadcrumbsProps) => {
                   <ParagraphComponent
                     itemProp="item"
                     itemScope
-                    itemType="http://schema.org/Thing"
+                    itemType='http://schema.org/Thing'
                   >
                     {crumb.title + " "}
                   </ParagraphComponent>
                 )}
-                <meta itemProp="position" content={i + 1} />
+                <meta itemProp='position' content={i + 1} />
               </LiComponent>
             ))}
         </UlComponent>
