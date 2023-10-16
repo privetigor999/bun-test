@@ -15,10 +15,12 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { transliterate } from 'transliteration';
 import { replace } from 'lodash';
 import { UploadOutlined } from '@ant-design/icons';
+import { v4 as uuidv4 } from 'uuid';
 
 import { getYearArray } from './getYearArray';
 import { actors } from './actors';
-import type { IFile, IFormValues } from './interface';
+import type { IFile } from './interface';
+import type { IMovie } from '@/interface/movie';
 
 interface IModalWithAddMovieProps {
   open: boolean;
@@ -35,7 +37,7 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const [uploadImageError, setUploadImageError] = useState<boolean>(false);
 
-  const handleSubmit = (values: IFormValues) => {
+  const handleSubmit = (values: IMovie) => {
     const transValueWithChangeWhitespaceToUnderline = replace(transliterate(values.title), / /g, '_');
     const transWithoutSymbols = replace(transliterate(transValueWithChangeWhitespaceToUnderline), /[^a-zA-Z0-9_]/g, '').toLowerCase();
 
@@ -44,11 +46,14 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
 
       const moviesRef = collection(db, 'movies');
 
+      const id = uuidv4();
+
       try {
         await setDoc(doc(moviesRef, transWithoutSymbols), {
           ...values,
           transliterate: transWithoutSymbols,
-          poster: downloadUrl
+          poster: downloadUrl,
+          id
         });
 
         api.success({

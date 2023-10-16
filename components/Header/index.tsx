@@ -32,7 +32,7 @@ export const Header = () => {
     <HeaderContainer>
       <Navigator>
         <DivContainer>
-          <Button>Главная</Button>
+          <Button style={{marginRight: 20}}>Главная</Button>
           <Button onClick={() => setIsOpenModal(true)}>Добавить фильм</Button>
         </DivContainer>
         <Button>Логин</Button>
