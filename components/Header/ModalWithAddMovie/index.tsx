@@ -96,7 +96,7 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
       },
 
       (error) => {
-        console.log('error: ', error)
+        console.debug('error: ', error)
       },
 
       async () => {
@@ -129,7 +129,7 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
         onFinish={handleSubmit}
         autoComplete='off'
         name='add_movie'
-        onFinishFailed={(v) => console.log(v)}
+        onFinishFailed={(v) => console.debug(v)}
       >
         <Form.Item
           label='Название'
