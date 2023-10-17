@@ -15,9 +15,6 @@ export const FilterMoviePanel = ({movies, setFilteredMovies}: IFilterMoviePanel)
   const [inputValue, setInputValue] = useState('');
   const [year, setYear] = useState(null);
 
-  console.log('inputValue', inputValue)
-  console.log('year', year)
-
   const handleChangeInpuValue = () => {
     const fieldValue = form.getFieldValue('filterInput');
 
@@ -27,27 +24,19 @@ export const FilterMoviePanel = ({movies, setFilteredMovies}: IFilterMoviePanel)
   useEffect(() => {
     const filteredMoviesData: IMovie[] = filter(movies, movie => {
         if (!inputValue.trim() && !year) {
-          console.log('1')
           return movies;
         }
 
         if (inputValue.trim() && !year) {
-          console.log('2')
           return movie.title!.toLowerCase().includes(inputValue.toLowerCase())
         }
 
         if (!inputValue.trim()) {
-          console.log('3')
           return movie.year === year;
         }
 
-              console.log('4')
-
         return movie.title.toLowerCase().includes(inputValue.toLowerCase()) && movie.year === year;
-
     });
-
-    console.log(filteredMoviesData)
 
     setFilteredMovies(filteredMoviesData);
   }, [inputValue, year]);
