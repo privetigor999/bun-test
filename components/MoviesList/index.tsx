@@ -36,7 +36,6 @@ export const MoviesList = () => {
     <Flex vertical style={{width: '100%'}}>
       <FilterMoviePanel
         movies={movies}
-        filteredMovies={filteredMovies}
         setFilteredMovies={setFilteredMovies}
       />
       <Row gutter={[16, 16]} style={{width: '100%', padding: '0 30px', margin: '20px 0'}}>
@@ -46,7 +45,7 @@ export const MoviesList = () => {
               <MovieItem movie={movie} key={movie.id}/>
             ))
           ) : (
-            <NotFoundByFilter />
+            <NotFoundByFilter text='Ничего не нашли'/>
           )
         }
       </Row>
