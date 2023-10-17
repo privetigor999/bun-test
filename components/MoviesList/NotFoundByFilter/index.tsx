@@ -4,7 +4,11 @@ import styled from 'styled-components';
 
 import badCatLottie from '@/assets/lottie/bad-cat-lottie.json';
 
-export const NotFoundByFilter = () => {
+interface INotFoundByFilterProps {
+  text: string;
+}
+
+export const NotFoundByFilter = ({text}: INotFoundByFilterProps) => {
   const Container = styled.div`
     display: flex;
     flex-direction: row;
@@ -19,7 +23,7 @@ export const NotFoundByFilter = () => {
   
   return (
     <Container>
-      <Paragraph>Ничего не нашли</Paragraph>
+      <Paragraph>{text}</Paragraph>
       <Lottie
       animationData={badCatLottie}
       style={{width: '60px', height: '60px'}}

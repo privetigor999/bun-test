@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { CSSProperties } from 'styled-components';
 
 import type { IBreadcrumb } from './interface';
 
 interface IBreadcrumbsProps {
   crubms: IBreadcrumb[];
-  style: unknown;
+  style: CSSProperties;
 }
 
 export const Breadcrumbs = ({crumbs, style}: IBreadcrumbsProps) => {
@@ -31,7 +31,6 @@ export const Breadcrumbs = ({crumbs, style}: IBreadcrumbsProps) => {
         <UlComponent
           itemScope
           itemType='http://schema.org/BreadcrumbList'
-          style={style}
         >
           {crumbs.length > 0 &&
             crumbs.map((crumb, i) => (
@@ -40,6 +39,7 @@ export const Breadcrumbs = ({crumbs, style}: IBreadcrumbsProps) => {
                 itemScope
                 itemType='http://schema.org/ListItem'
                 key={i}
+                style={style}
               >
                 {!!i && (
                   <>
