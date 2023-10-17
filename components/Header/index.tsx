@@ -3,8 +3,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'antd';
 import styled from 'styled-components';
+import { signInWithPopup, signInWithRedirect } from 'firebase/auth';
 import { ModalWithAddMovie } from './ModalWithAddMovie';
 import { routes } from '@/data/routes';
+import { auth, provider } from '@/firebase';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -29,6 +31,15 @@ const DivContainer = styled.div`
 export const Header = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
+  const handleClickAuth = () => {
+    signInWithPopup(auth, provider).then(user => {
+      const user = {
+        name: user.user.displayName,
+        photo: user.user.photoURL
+      }
+    })
+  }
+
   return (
     <HeaderContainer>
       <Navigator>
@@ -38,7 +49,7 @@ export const Header = () => {
           </Link>
           <Button onClick={() => setIsOpenModal(true)}>Добавить фильм</Button>
         </DivContainer>
-        <Button>Логин</Button>
+        <Button onClick={handleClickAuth}>Логин</Button>
       </Navigator>
       <ModalWithAddMovie
         open={isOpenModal}
