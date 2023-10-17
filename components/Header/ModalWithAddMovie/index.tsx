@@ -54,7 +54,9 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
           ...values,
           transliterate: transWithoutSymbols,
           poster: downloadUrl,
-          id
+          id,
+          countRate: 0,
+          rate: 0
         });
 
         api.success({
@@ -144,7 +146,7 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
           name='description'
           rules={[{required: true, message: 'Описание обязательно'}]}
         >
-          <Input />
+          <Input.TextArea maxLength={6}/>
         </Form.Item>
         <Form.Item 
           label='Год выхода'
