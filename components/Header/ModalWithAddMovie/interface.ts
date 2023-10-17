@@ -4,7 +4,9 @@ export interface IFormValues {
   description: string;
   poster: string;
   transliterate: string;
-  actors?: string[]
+  actors?: string[],
+  countRate: number,
+  rate: number
 }
 
 export interface IFile {

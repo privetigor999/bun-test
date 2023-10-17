@@ -54,7 +54,9 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
           ...values,
           transliterate: transWithoutSymbols,
           poster: downloadUrl,
-          id
+          id,
+          countRate: 0,
+          rate: 0
         });
 
         api.success({
