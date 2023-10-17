@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button, notification } from 'antd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { signInWithPopup, signOut } from 'firebase/auth';
 import { ModalWithAddMovie } from './ModalWithAddMovie';
 import { routes } from '@/data/routes';
@@ -42,7 +42,7 @@ export const Header = () => {
       const user: IUser = {
         name: googleUser.user.displayName!,
         photo: googleUser.user.photoURL!,
-        email: googleUser.user.email
+        email: googleUser.user.email!
       };
       console.log(googleUser)
 
@@ -63,18 +63,28 @@ export const Header = () => {
 
     api.success({
       message: 'Успешно!',
-      description: `Вы вышли из аккаунта ${user.email}`,
+      description: `Вы вышли из аккаунта ${user?.email ?? user.email}`,
       placement: 'topRight'
     })
-  }
+  };
+
+  const ButtonMain = styled.div`
+    margin-right: 4px;
+
+    @media (min-width: 375px) {
+      margin-right: 20px;
+    }
+  `;
 
   return (
     <HeaderContainer>
       <Navigator>
         <DivContainer>
-          <Link href={routes.main}>
-            <Button style={{marginRight: 20}}>Главная</Button>
-          </Link>
+          <ButtonMain>
+            <Link href={routes.main}>
+              <Button>Главная</Button>
+            </Link>
+          </ButtonMain>
           <Button onClick={() => setIsOpenModal(true)}>Добавить фильм</Button>
         </DivContainer>
         {
