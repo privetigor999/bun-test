@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,18 +14,22 @@
     "effector": "^22.8.7",
     "effector-react": "^22.5.4",
     "firebase": "^10.5.0",
+    "jest": "^29.7.0",
     "lodash": "^4.17.21",
     "lottie-react": "^2.4.0",
     "next": "13.5.4",
+    "pluralize-ru": "^1.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-shave": "^1.0.1",
     "shave": "^5.0.3",
     "styled-components": "^6.1.0",
     "transliteration": "^2.3.5",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.6",
     "@types/lodash": "^4.14.199",
     "@types/node": "^20",
     "@types/react": "^18",
