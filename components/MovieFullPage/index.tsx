@@ -10,6 +10,7 @@ import { dbCollection } from '@/data/db';
 import { calculateNewRating } from './helpers/calculateNewRating';
 
 import type { IMovie } from '@/interface/movie';
+import { Comments } from './Comments';
 
 interface IMovieFullPageProps {
   movie: IMovie
@@ -98,20 +99,23 @@ export const MovieFullPage = ({movie}: IMovieFullPageProps) => {
   }
 
   return (
-    <MainContainer style={{width: '100%'}}>
-      {contextHolder}
-      <ImageContainer>
-        <img src={movie.poster} style={{objectFit: 'contain', width: '100%'}} alt={movie.title}/>
-      </ImageContainer>
-      <InfoContainer>
-        <Title>{movie.title}</Title>
-        <Rating onChange={handleClickRate} style={{margin: '4px 0 8px 0'}} rate={movie.rate}/>
-        <Field>Год выхода: <span>{movie.year}</span></Field>
-        <Description>{movie.description}</Description>
-        <Flex>
-          <Field>Главные актеры: <span>{actors}</span></Field>
-        </Flex>
-      </InfoContainer>
-    </MainContainer>
+    <>
+      <MainContainer style={{width: '100%'}}>
+        {contextHolder}
+        <ImageContainer>
+          <img src={movie.poster} style={{objectFit: 'contain', width: '100%'}} alt={movie.title}/>
+        </ImageContainer>
+        <InfoContainer>
+          <Title>{movie.title}</Title>
+          <Rating onChange={handleClickRate} style={{margin: '4px 0 8px 0'}} rate={movie.rate}/>
+          <Field>Год выхода: <span>{movie.year}</span></Field>
+          <Description>{movie.description}</Description>
+          <Flex>
+            <Field>Главные актеры: <span>{actors}</span></Field>
+          </Flex>
+        </InfoContainer>
+      </MainContainer>
+      <Comments comments={movie.comments} transliterate={movie.transliterate}/>
+    </>
   );
 };
