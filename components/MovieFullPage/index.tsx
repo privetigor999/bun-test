@@ -70,7 +70,6 @@ const Description = styled.p`
 `;
 
 export const MovieFullPage = ({movie}: IMovieFullPageProps) => {
-  console.log(movie)
   const actors = join(movie.actors, ', ');
   const [api, contextHolder] = notification.useNotification();
 

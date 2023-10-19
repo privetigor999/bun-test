@@ -63,7 +63,7 @@ export const CommentInput = ({user, transliterate}: ICommentInputProps) => {
     <Flex style={{width: 'inherit'}}>
       {contextHolder}
       <Image src={user.photo} width={30} height={30} alt={user.name} style={{borderRadius: '50%'}}/>
-      <Form form={form} onFinishFailed={(e) => console.log(e)} onFinish={handleSubmit}>
+      <Form form={form} onFinishFailed={(e) => console.debug(e)} onFinish={handleSubmit}>
         <InputContainer>
           <Form.Item name='message'>
             <Input.TextArea maxLength={300} style={{marginLeft: '4px'}}/>
