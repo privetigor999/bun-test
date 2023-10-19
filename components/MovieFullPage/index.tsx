@@ -6,6 +6,7 @@ import { join } from 'lodash';
 import { Rating } from '../ui/Rating';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
+import pluralize from 'pluralize-ru';
 import { dbCollection } from '@/data/db';
 import { calculateNewRating } from './helpers/calculateNewRating';
 
@@ -69,6 +70,25 @@ const Description = styled.p`
   margin-bottom: 6px;
 `;
 
+const RateWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 312px;
+  margin: 10px 0 14px 0;
+  padding: 4px 6px;
+  border: 1px solid #1677ff;
+  border-radius: 4px;
+  background-color: #f3f8ff;
+`;
+
+const RatingText = styled.p`
+  span {
+    font-size: 20px;
+    color: tomato;
+  }
+`;
+
 export const MovieFullPage = ({movie}: IMovieFullPageProps) => {
   const actors = join(movie.actors, ', ');
   const [api, contextHolder] = notification.useNotification();
@@ -96,7 +116,14 @@ export const MovieFullPage = ({movie}: IMovieFullPageProps) => {
         placement: 'topRight'
       })
     }
-  }
+  };
+
+  const pluralizeFeedback = pluralize(movie.countRate, 'отзывов', 'отзыва', 'отзывов', 'отзывов');
+
+  const rateInfo = movie.countRate === 0 ?
+    'Отзывов еще не было' : (
+      <>Рейтинг <span>{movie.rate}</span> на основе {movie.countRate} {pluralizeFeedback}</>
+    );
 
   return (
     <>
@@ -107,7 +134,10 @@ export const MovieFullPage = ({movie}: IMovieFullPageProps) => {
         </ImageContainer>
         <InfoContainer>
           <Title>{movie.title}</Title>
-          <Rating onChange={handleClickRate} style={{margin: '4px 0 8px 0'}} rate={movie.rate}/>
+          <RateWrapper>
+            <Rating onChange={handleClickRate} style={{margin: '4px 0 8px 0'}} rate={movie.rate}/>
+            <RatingText suppressHydrationWarning>{rateInfo}</RatingText>
+          </RateWrapper>
           <Field>Год выхода: <span>{movie.year}</span></Field>
           <Description>{movie.description}</Description>
           <Flex>
