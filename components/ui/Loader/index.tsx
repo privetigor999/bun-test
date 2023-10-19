@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components';
 import { Spin } from 'antd';
 
@@ -11,7 +10,7 @@ export const Loader = () => {
   `;
 
   return (
-    <Container>
+    <Container id='loader'>
       <Spin />
     </Container>
   );
