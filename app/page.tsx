@@ -8,5 +8,5 @@ export default function Home() {
     <main className={styles.main}>
       <MoviesList />
     </main>
-  )
-}
+  );
+};

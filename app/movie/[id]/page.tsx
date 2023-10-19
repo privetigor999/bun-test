@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-async-client-component */
-'use client';
 import React from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
@@ -11,17 +10,17 @@ import type { IMovie } from '@/interface/movie';
 import type { IBreadcrumb } from '@/components/ui/Breadcrumbs/interface';
 import { notFound } from 'next/navigation';
 
-export default async function Movie({params: {id}}){
-  const movieResp = await getDoc(doc(db, 'movies', id));
+export default async function Movie({ params }: { params: { id: string } }){
+  const movieResp = await getDoc(doc(db, 'movies', params.id));
   const movie: IMovie | undefined = movieResp.data();
-
+  
   if (!movieResp) {
     notFound();
   }
 
   const crumbs: IBreadcrumb[] = [
     {title: 'Главная', src: '/'},
-    {title: movie?.title, src: null}
+    {title: movie!.title, src: null}
   ];
 
   const styledBreadcrumbs = {

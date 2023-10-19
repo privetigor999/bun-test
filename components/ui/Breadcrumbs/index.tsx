@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import Link from 'next/link';
 import styled, { CSSProperties } from 'styled-components';

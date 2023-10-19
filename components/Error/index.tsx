@@ -1,10 +1,6 @@
-'use client';
-import { routes } from '@/data/routes';
-import { Button } from 'antd';
-import Link from 'next/link';
 import styled from 'styled-components';
 
-export default function Error() {
+export const Error = () => {
   const Container = styled.section`
     display: flex;
     align-items: center;
@@ -21,10 +17,7 @@ export default function Error() {
 
   return (
     <Container>
-      <ErrorMessage>Такого фильма нет :(</ErrorMessage>
-      <Link href={routes.main}>
-        <Button type='primary'>На главную</Button>
-      </Link>
+      <ErrorMessage>Произошла ошибка</ErrorMessage>
     </Container>
   );
 };

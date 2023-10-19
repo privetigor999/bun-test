@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export default function Error() {
+export default function NotFound() {
   const Container = styled.section`
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@ export default function Error() {
 
   return (
     <Container>
-      <ErrorMessage>Такого фильма нет :(</ErrorMessage>
+      <ErrorMessage>Такого страницы нет :(</ErrorMessage>
       <Link href={routes.main}>
         <Button type='primary'>На главную</Button>
       </Link>
