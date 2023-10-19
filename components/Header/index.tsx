@@ -44,7 +44,6 @@ export const Header = () => {
         photo: googleUser.user.photoURL!,
         email: googleUser.user.email!
       };
-      console.log(googleUser)
 
       setUser(user);
 

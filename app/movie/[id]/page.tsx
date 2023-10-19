@@ -9,10 +9,15 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import type { IMovie } from '@/interface/movie';
 import type { IBreadcrumb } from '@/components/ui/Breadcrumbs/interface';
+import { notFound } from 'next/navigation';
 
 export default async function Movie({params: {id}}){
   const movieResp = await getDoc(doc(db, 'movies', id));
   const movie: IMovie | undefined = movieResp.data();
+
+  if (!movieResp) {
+    notFound();
+  }
 
   const crumbs: IBreadcrumb[] = [
     {title: 'Главная', src: '/'},
