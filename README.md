@@ -39,6 +39,7 @@ http://localhost:3000/
 - Effector
 - Firebase
 - Antd
+- styled-components
 
 ### Дополнительно
 - lodash
