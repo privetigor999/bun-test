@@ -1,18 +1,17 @@
 /* eslint-disable @next/next/no-async-client-component */
 import React from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import { DocumentData, doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { Flex } from 'antd';
 import { MovieFullPage } from '@/components/MovieFullPage';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-
-import type { IMovie } from '@/interface/movie';
-import type { IBreadcrumb } from '@/components/ui/Breadcrumbs/interface';
 import { notFound } from 'next/navigation';
+
+import type { IBreadcrumb } from '@/components/ui/Breadcrumbs/interface';
 
 export default async function Movie({ params }: { params: { id: string } }){
   const movieResp = await getDoc(doc(db, 'movies', params.id));
-  const movie: IMovie | undefined = movieResp.data();
+  const movie: DocumentData | undefined = movieResp.data();
   
   if (!movieResp) {
     notFound();
