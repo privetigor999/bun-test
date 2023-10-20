@@ -8,10 +8,11 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { notFound } from 'next/navigation';
 
 import type { IBreadcrumb } from '@/components/ui/Breadcrumbs/interface';
+import type { IMovie } from '@/interface/movie';
 
 export default async function Movie({ params }: { params: { id: string } }){
   const movieResp = await getDoc(doc(db, 'movies', params.id));
-  const movie: DocumentData | undefined = movieResp.data();
+  const movie: IMovie | undefined = movieResp.data() as IMovie;
   
   if (!movieResp) {
     notFound();
@@ -29,7 +30,7 @@ export default async function Movie({ params }: { params: { id: string } }){
   return (
     <Flex vertical style={{padding: '0 30px'}}>
       <Breadcrumbs crumbs={crumbs} style={styledBreadcrumbs}/>
-      <MovieFullPage movie={movie}/>
+      {movie && <MovieFullPage movie={movie}/>}
     </Flex>
   )
 }

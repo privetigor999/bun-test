@@ -6,7 +6,7 @@ import styled, { CSSProperties } from 'styled-components';
 import type { IBreadcrumb } from './interface';
 
 interface IBreadcrumbsProps {
-  crubms: IBreadcrumb[];
+  crumbs: IBreadcrumb[];
   style: CSSProperties;
 }
 
@@ -66,7 +66,7 @@ export const Breadcrumbs = ({crumbs, style}: IBreadcrumbsProps) => {
                     {crumb.title + " "}
                   </ParagraphComponent>
                 )}
-                <meta itemProp='position' content={i + 1} />
+                <meta itemProp='position' content={(i + 1).toString()} />
               </LiComponent>
             ))}
         </UlComponent>
