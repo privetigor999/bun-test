@@ -80,7 +80,7 @@ export const ModalWithAddMovie = ({open, onCancel, closeModal}: IModalWithAddMov
     postFormData()
   };
 
-  const uploadImage = async ({file}: IFile) => {
+  const uploadImage = async ({file}: any) => {
     const name = new Date().getTime() + '_movie';
 
     const storageRef = ref(storage, name);
