@@ -18,5 +18,5 @@ export const Rating = ({rate = 0, onChange, style, ...props}: IRatingProps) => {
       value={rate}
       {...props}
     />
-  )
-}
+  );
+};
