@@ -62,7 +62,7 @@ export const Header = () => {
 
     api.success({
       message: 'Успешно!',
-      description: `Вы вышли из аккаунта ${user?.email ?? user.email}`,
+      description: `Вы вышли из аккаунта ${user?.email && user.email}`,
       placement: 'topRight'
     })
   };
