@@ -21,7 +21,6 @@
     "pluralize-ru": "^1.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "shave": "^5.0.3",
     "styled-components": "^6.1.0",
     "transliteration": "^2.3.5",
     "uuid": "^9.0.1"
