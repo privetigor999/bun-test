@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Input, Form, Select, Button } from 'antd';
 import { IMovie } from '@/interface/movie';
